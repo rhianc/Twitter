@@ -28,10 +28,8 @@ class Tweet {
         favorited = dictionary["favorited"] as? Bool
         retweetCount = dictionary["retweet_count"] as! Int
         retweeted = dictionary["retweeted"] as! Bool
-        
         let user = dictionary["user"] as! [String: Any]
         self.user = User(dictionary: user)
-        
         let createdAtOriginalString = dictionary["created_at"] as! String
         let formatter = DateFormatter()
         // Configure the input format to parse the date string
@@ -43,8 +41,12 @@ class Tweet {
         formatter.timeStyle = .none
         // Convert Date to String
         createdAtString = formatter.string(from: date)
-        
-        
+    }
+    
+    static func tweets(with array: [[String: Any]]) -> [Tweet] {
+        return array.flatMap({ (dictionary) -> Tweet in
+            Tweet(dictionary: dictionary)
+        })
     }
 }
 

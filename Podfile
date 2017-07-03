@@ -6,6 +6,7 @@ target 'twitter_alamofire_demo' do
   use_frameworks!
 
   # Pods for twitter_alamofire_demo
+  pod 'AlamofireImage', '~> 3.1'
   pod 'Alamofire', '~> 4.4'
   pod 'OAuthSwift', '~> 1.1.0'
   pod 'OAuthSwiftAlamofire'

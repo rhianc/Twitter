@@ -22,6 +22,8 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
             tweetTextLabel.text = tweet.text
+            profilePic.layer.cornerRadius = 0.5*profilePic.frame.width
+            profilePic.layer.masksToBounds = true
             profilePic.af_setImage(withURL: tweet.user.profilePicURL!)
             userFull.text = tweet.user.name
             username.text = "\(tweet.user.screenName!)  \(tweet.createdAtString)"

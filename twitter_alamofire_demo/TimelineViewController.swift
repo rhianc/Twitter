@@ -24,6 +24,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.frame.size.width = view.frame.size.width
         tableView.estimatedRowHeight = 100
         // add refresh control to table view
         tableView.insertSubview(refreshControl, at: 0)

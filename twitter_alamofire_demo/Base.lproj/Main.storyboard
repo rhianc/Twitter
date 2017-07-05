@@ -197,9 +197,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="9Zi-uW-GTS">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
                                 <action selector="didTapLogout:" destination="5YO-Vh-39k" id="fM7-h5-mq1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit-icon" id="gwV-U6-qyZ">
+                            <connections>
+                                <segue destination="Fgp-F3-huf" kind="presentation" identifier="compose" id="IuL-8z-Cgj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -210,6 +215,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlF-i2-Ves" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1693.5999999999999" y="25.637181409295355"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="uOI-aP-mL9">
+            <objects>
+                <viewController id="Fgp-F3-huf" customClass="ComposeViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lgG-Kw-1qm"/>
+                        <viewControllerLayoutGuide type="bottom" id="cEf-Hp-lDa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UwY-Rd-MgX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-Sk-Esf">
+                                <rect key="frame" x="16" y="31" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="close-icon"/>
+                                <connections>
+                                    <action selector="close:" destination="Fgp-F3-huf" eventType="touchUpInside" id="RmH-GQ-p5X"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Ko-dh-7Rf">
+                                <rect key="frame" x="16" y="69" width="343" height="236"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaX-7t-vQu">
+                                <rect key="frame" x="329" y="28" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="edit-icon"/>
+                                <connections>
+                                    <action selector="send:" destination="Fgp-F3-huf" eventType="touchUpInside" id="BiI-zk-IDZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="8Ko-dh-7Rf" id="YaY-Rm-dgF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eN7-TT-qtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2444" y="25.637181409295355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXZ-z8-8LI">
@@ -232,6 +283,8 @@
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="close-icon" width="26" height="24"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="favor-icon-red" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>

@@ -31,7 +31,7 @@ class TweetCell: UITableViewCell {
             username.text = "\(tweet.user.screenName!)  \(tweet.createdAtString)"
             retweetCount.text = String(tweet.retweetCount)
             likeCount.text = String(tweet.favoriteCount!)
-            if tweet.favorited!{
+            if tweet.favorited{
                 favorite.isSelected = true
             }
             if tweet.retweeted{

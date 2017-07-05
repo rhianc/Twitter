@@ -18,6 +18,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var retweetCount: UILabel!
     @IBOutlet weak var likeCount: UILabel!
+    @IBOutlet weak var retweet: UIButton!
+    @IBOutlet weak var favorite: UIButton!
     
     var tweet: Tweet! {
         didSet {
@@ -29,6 +31,12 @@ class TweetCell: UITableViewCell {
             username.text = "\(tweet.user.screenName!)  \(tweet.createdAtString)"
             retweetCount.text = String(tweet.retweetCount)
             likeCount.text = String(tweet.favoriteCount!)
+            if tweet.favorited!{
+                favorite.isSelected = true
+            }
+            if tweet.retweeted{
+                retweet.isSelected = true
+            }
         }
     }
     
@@ -46,9 +54,29 @@ class TweetCell: UITableViewCell {
     }
     
     @IBAction func retweet(_ sender: UIButton) {
+        if sender.isSelected != true{
+            sender.isSelected = true
+            APIManager.shared.retweet(tweet: tweet)
+            retweetCount.text = String(Int(retweetCount.text!)!+1)
+        }
+        else{
+            sender.isSelected = false
+            APIManager.shared.unretweet(tweet: tweet)
+            retweetCount.text = String(Int(retweetCount.text!)!-1)
+        }
     }
     
     @IBAction func like(_ sender: UIButton) {
+        if sender.isSelected != true{
+            sender.isSelected = true
+            APIManager.shared.favorite(tweet: tweet)
+            likeCount.text = String(Int(likeCount.text!)!+1)
+        }
+        else{
+            sender.isSelected = false
+            APIManager.shared.unfavorite(tweet: tweet)
+            likeCount.text = String(Int(likeCount.text!)!-1)
+        }
     }
     
     @IBAction func dm(_ sender: UIButton) {

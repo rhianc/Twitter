@@ -101,6 +101,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTn-hH-QtM">
                                                     <rect key="frame" x="152.5" y="61.5" width="30" height="30"/>
                                                     <state key="normal" image="retweet-icon"/>
+                                                    <state key="selected" image="retweet-icon-green"/>
                                                     <connections>
                                                         <action selector="retweet:" destination="U1g-kw-izy" eventType="touchUpInside" id="2zn-hN-HDQ"/>
                                                     </connections>
@@ -108,6 +109,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QON-Wd-Mrh">
                                                     <rect key="frame" x="235" y="62" width="30" height="30"/>
                                                     <state key="normal" image="favor-icon"/>
+                                                    <state key="selected" image="favor-icon-red"/>
                                                     <connections>
                                                         <action selector="like:" destination="U1g-kw-izy" eventType="touchUpInside" id="suK-2R-pex"/>
                                                     </connections>
@@ -179,8 +181,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favorite" destination="QON-Wd-Mrh" id="SP3-SQ-xJB"/>
                                             <outlet property="likeCount" destination="3Vu-Uj-PKy" id="AQS-7U-1BC"/>
                                             <outlet property="profilePic" destination="um9-5R-Wao" id="1Dr-k7-KQv"/>
+                                            <outlet property="retweet" destination="PTn-hH-QtM" id="fWA-fa-MwG"/>
                                             <outlet property="retweetCount" destination="KiT-1W-cPt" id="Wic-4h-b7a"/>
                                             <outlet property="tweetTextLabel" destination="epC-Fs-Q5Z" id="ZLP-IG-Wsf"/>
                                             <outlet property="userFull" destination="Htj-8P-YPV" id="gQs-jR-SOb"/>
@@ -229,8 +233,10 @@
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="favor-icon-red" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, UserTapDelegate {
     
     var tweets: [Tweet] = []
     
@@ -52,8 +52,17 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         cell.tweet = tweets[indexPath.row]
-        
+        cell.profilePic.tag = indexPath.row
+        cell.delegate = self
+        let tapped:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedUser(_:)))
+        tapped.numberOfTapsRequired = 1
+        cell.profilePic?.addGestureRecognizer(tapped)
         return cell
+    }
+    
+    func tappedUser(_ sender: UITapGestureRecognizer){
+        let user = tweets[(sender.view?.tag)!].user
+        self.performSegue(withIdentifier: "toProfile", sender: user)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,6 +97,10 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         if segue.identifier == "compose"{
             let destination = segue.destination as! ComposeViewController
             destination.delegate = self
+        }
+        if segue.identifier == "toProfile"{
+            let destination = segue.destination as! ProfileViewController
+            destination.user = sender as! User
         }
     }
     

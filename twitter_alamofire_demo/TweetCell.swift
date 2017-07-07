@@ -10,6 +10,10 @@ import UIKit
 import AlamofireImage
 //import Alamofire
 
+protocol UserTapDelegate {
+    func tappedUser(_ sender: UITapGestureRecognizer)
+}
+
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var tweetTextLabel: UILabel!
@@ -20,6 +24,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var retweet: UIButton!
     @IBOutlet weak var favorite: UIButton!
+    
+    var delegate: UserTapDelegate?
     
     var tweet: Tweet! {
         didSet {
@@ -43,6 +49,7 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

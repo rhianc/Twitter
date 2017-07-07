@@ -17,16 +17,19 @@ class User {
     var description: String?
     var followersCount: String?
     var followingCount: String?
+    var id: Int64?
     // For user persistance
     var dictionary: [String: Any]?
     private static var _current: User?
     
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
+        //print(dictionary)
+        id = (dictionary["id"] as! Int64)
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as? String
         let profileString = dictionary["profile_image_url_https"] as! String
-        let profileBackString = dictionary["profile_background_image_url_https"] as! String
+        let profileBackString = dictionary["profile_banner_url"] as! String
         profilePicURL = URL(string: profileString)
         profileBackgroundURL = URL(string: profileBackString)
         description = dictionary["description"] as? String

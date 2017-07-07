@@ -88,5 +88,4 @@ class TweetCell: UITableViewCell {
     
     @IBAction func dm(_ sender: UIButton) {
     }
-    
 }

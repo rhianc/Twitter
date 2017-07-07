@@ -24,7 +24,6 @@ class User {
     
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
-        //print(dictionary)
         id = (dictionary["id"] as! Int64)
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as? String

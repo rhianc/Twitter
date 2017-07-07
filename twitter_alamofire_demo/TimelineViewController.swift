@@ -78,10 +78,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func didTapLogout(_ sender: Any) {
         APIManager.shared.logout()
     }
-    
-    // Makes a network request to get updated data
-    // Updates the tableView with the new data
-    // Hides the RefreshControl
+
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         loadData(completion: {
             self.refreshControl.endRefreshing()

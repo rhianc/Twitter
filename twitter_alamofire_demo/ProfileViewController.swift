@@ -17,15 +17,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.hidesBarsOnSwipe = true
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = .clear
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(user.dictionary)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset.top = 0
@@ -38,8 +33,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             else{
                 self.tweets = tweetsdic!
-                //print(self.tweets)
-                //print("got here")
                 self.tableView.reloadData()
             }
         }
@@ -59,7 +52,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
             cell.tweet = tweets[indexPath.row]
-            //print("hlo")
             return cell
         }
     }
@@ -76,15 +68,4 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

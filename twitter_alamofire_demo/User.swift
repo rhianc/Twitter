@@ -28,7 +28,8 @@ class User {
         id = (dictionary["id"] as! Int64)
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as? String
-        let profileString = dictionary["profile_image_url_https"] as! String
+        var profileString = dictionary["profile_image_url_https"] as! String
+        profileString = profileString.replacingOccurrences(of: "normal", with: "bigger")
         let profileBackString = dictionary["profile_banner_url"] as! String
         profilePicURL = URL(string: profileString)
         profileBackgroundURL = URL(string: profileBackString)
